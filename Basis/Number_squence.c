@@ -4,25 +4,22 @@
 int main (void)
 {
 	int i;
-	signed int Num;
-	signed int Sum=0;
-	signed int Max=INT_MIN;
-	signed int Min=INT_MAX;
+	int Num;
+	int Max=INT_MIN;
+	int Min=INT_MAX;
+	int Sum=0;
 	scanf("%d",&Num);
-	unsigned int Number[Num];
+	int Number[Num];
 	
 	for (i=0;i<Num;i++)
 	{
 		scanf("%d",&Number[i]);
-		if(Number[i]>Max)
-			Max=Number[i];
-		if(Number[i]<Min)
-			Min=Number[i];
 		Sum=Sum+Number[i];
+		if (Max<Number[i])
+			Max=Number[i];
+		if(Min>Number[i])
+			Min=Number[i];	
 	}
-	printf("%u\n",Max);
-	printf("%u\n",Min);
-	printf("%u\n",Sum);
+	printf("%d\n%d\n%d\n",Max,Min,Sum);
 	return 0;
-	
 }
