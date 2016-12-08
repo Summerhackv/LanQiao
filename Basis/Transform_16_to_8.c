@@ -1,7 +1,10 @@
 /*Transform a number from Hexadecimal to Octal*/
 #include <stdio.h>
+#include <math.h>
+#include <string.h>
 #define  BIT  8
-int Trans16To10(char );
+
+int Trans16To10(char *);
 int *Trans10To8(int );
 
 
@@ -12,24 +15,25 @@ int main (void)
 	scanf("%d",&Num);
 	
 	int Midd[Num];
-	int Output[Num];
-	char *Out[Num];
+	int *Output[Num];
 	char Input[Num][BIT];
 	
 	for (i=0;i<Num;i++)
 	{
-		gets(Input[i][BIT]);
-		Midd[i]=Trans16To10(Input[i][BIT]);
-		Out[i]=Trans10To8(Midd[i]);
+		scanf("%s",Input[i]);
+		Midd[i]=Trans16To10(Input[i]);
+		Output[i]=Trans10To8(Midd[i]);
 	}
+	//for (i=0;i<Num;i++)
+	//	printf("%d\n",Midd[i]);
 	
 	for (j=0;j<Num;j++)
-		printf("%d",Out[i]);
-	printf("\n");
+		printf("%d\n",Output[j]);
+	
 	return 0;
 }
 
-int Trans16To10(char Input)
+int Trans16To10(char *Str)
 {
 	int i;
 	int ASCII;
@@ -37,10 +41,10 @@ int Trans16To10(char Input)
 	char In[BIT];
 	double Sum=0;
 	
-	Length=strlen(Input);
-	In[BIT]=Input;
+	strcpy(In,Str);
+	Length=strlen(In);
+
 	
-	/*Transform*/
 	for (i=0;i<Length;i++)
 	{
 		ASCII=In[i];
@@ -55,10 +59,12 @@ int Trans16To10(char Input)
 int *Trans10To8(int Midd)
 {
 	int i;
+	int j=0;
 	int N=8;
+	int *Adress;
 	int Output[BIT];
 	
-	/*Transform*/
+	printf("Midd=%d\n",Midd);
 	Output[0]=Midd%8;
 	for(i=1;i<BIT;i++)
 	{
@@ -69,9 +75,17 @@ int *Trans10To8(int Midd)
 		{
 			Output[i]=Midd/N%8;
 			N=N*8;
+			j++;
 		}	
 			
 	}
-	return Output;
-	
+	printf("Output:\n");
+	for (i=0;i<j;i++)
+		printf("%d",Output[j]);
+	printf("\n");
+	Adress=Output;
+	return Adress;	
 }
+
+
+
