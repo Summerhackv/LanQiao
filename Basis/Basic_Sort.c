@@ -1,4 +1,4 @@
- /* MaoPao */
+/*Basic Sort*/
  #include <stdio.h>
  
  int main (void)
@@ -17,7 +17,7 @@
 	/*Sort*/	
  	for (i=0;i<N;i++)
  	{
- 		for (j=N-1;j>i;j--)
+ 		for (j=i+1;j<N;j++)
  		{
  			if(Num[i]>Num[j])
  			{
